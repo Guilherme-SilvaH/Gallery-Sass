@@ -1,0 +1,31 @@
+@use 'variables'
+
+@mixin container
+    max-width: variables.$container-widht
+    padding: 1.5rem 0 //padding apenas na parte superior e inferior
+    margin: 0 auto // quando limitamos uma largura, somos obrigados a usar uma margin auto para centralizar o nosso container
+
+@mixin flex-center 
+    //centralizar os itens no centro
+    display: flex
+    align-items: center //centralizando na horizontal
+    justify-content: center //Centralizando na vertical
+
+@mixin bg-img($img)
+    background-image: url('../img/#{$img}')
+    background-size: 100%
+    background-position: center
+    background-repeat: no-repeat
+    filter: grayscale(100%) //deixar a tela em preto em branco
+    transition: .6s
+
+    &:hover
+        background-size: 110%
+        filter: grayscale(0%)
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/#{$img}') //gerar uma opacidade sem criar um elemento na frente
+
+@mixin mobile
+    @media(max-widht: 425px)
+        @content
+        
+    
